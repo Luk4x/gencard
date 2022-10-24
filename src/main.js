@@ -1,6 +1,7 @@
 import './css/index.css';
 import IMask from 'imask';
 
+// Personalizing card
 const cardBgColor1 = document.querySelector('.cc-bg svg > g g:nth-child(1) path');
 const cardBgColor2 = document.querySelector('.cc-bg svg > g g:nth-child(2) path');
 const cardLogo = document.querySelector('.cc-logo span:nth-child(2) img');
@@ -18,6 +19,7 @@ const setCardType = type => {
 };
 globalThis.setCardType = setCardType;
 
+// Creating masks
 const cardNumber = document.getElementById('card-number');
 const cardNumberPattern = {
     mask: [
@@ -113,4 +115,27 @@ const expirationDateMasked = IMask(expirationDate, expirationDatePattern);
 
 const securityCodeMasked = IMask(document.getElementById('security-code'), {
     mask: '000'
+});
+
+// Changing card
+const cardShowNumber = document.querySelector('.cc-number');
+cardNumberMasked.on('accept', () => {
+    cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '0000 0000 0000 0000';
+    setCardType(cardNumberMasked.masked.currentMask.cardType);
+});
+
+const cardName = document.getElementById('card-holder');
+const cardShowName = document.querySelector('.cc-holder .value');
+cardName.addEventListener('input', () => {
+    cardShowName.innerText = cardName.value.length > 0 ? cardName.value : 'Nome Completo';
+});
+
+const cardShowExpirationDate = document.querySelector('.cc-extra .valuec');
+expirationDateMasked.on('accept', () => {
+    cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '00/00';
+});
+
+const cardShowSecurityCode = document.querySelector('.cc-security .value');
+securityCodeMasked.on('accept', () => {
+    cardShowSecurityCode.innerText = securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '000';
 });
