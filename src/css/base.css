@@ -40,7 +40,7 @@ body {
     margin: 0 auto;
     padding: 2.8rem 6rem 4rem;
     background: #202024;
-    border: 0.1rem solid #323238;
+    border: 1px solid #323238;
     border-radius: 0.6rem;
     position: relative;
     z-index: 1;

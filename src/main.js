@@ -113,7 +113,8 @@ const expirationDatePattern = {
 };
 const expirationDateMasked = IMask(expirationDate, expirationDatePattern);
 
-const securityCodeMasked = IMask(document.getElementById('security-code'), {
+const securityCode = document.getElementById('security-code');
+const securityCodeMasked = IMask(securityCode, {
     mask: '000'
 });
 
@@ -121,6 +122,7 @@ const securityCodeMasked = IMask(document.getElementById('security-code'), {
 const cardShowNumber = document.querySelector('.cc-number');
 cardNumberMasked.on('accept', () => {
     cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '0000 0000 0000 0000';
+    cardNumber.style.borderColor = cardNumberMasked.value.length === 19 ? '#116011' : '#323238';
     setCardType(cardNumberMasked.masked.currentMask.cardType);
 });
 
@@ -129,14 +131,51 @@ const cardShowName = document.querySelector('.cc-holder .value');
 cardName.addEventListener('input', () => {
     cardName.value = cardName.value.replace(/[0-9]/g, '');
     cardShowName.innerText = cardName.value.length > 0 ? cardName.value : 'Nome Completo';
+    cardName.style.borderColor = cardName.value.match(/[a-zA-Z] [a-zA-Z]/) ? '#116011' : '#323238';
 });
 
 const cardShowExpirationDate = document.querySelector('.cc-extra .value');
 expirationDateMasked.on('accept', () => {
     cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '00/00';
+    expirationDate.style.borderColor = expirationDateMasked.value.length === 5 ? '#116011' : '#323238';
 });
 
 const cardShowSecurityCode = document.querySelector('.cc-security .value');
 securityCodeMasked.on('accept', () => {
     cardShowSecurityCode.innerText = securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '000';
+    securityCode.style.borderColor = securityCodeMasked.value.length === 3 ? '#116011' : '#323238';
 });
+
+// form functionality
+const inputs = [securityCode, cardName, expirationDate, cardNumber];
+inputs.forEach(input => {
+    // on a input in each input, verify if the color of the actual input and others if green (that is, if it is duly filled) and if all inputs are duly filled, unlock button submit
+    input.addEventListener('input', () => {
+        const enableButton = inputs.reduce((enable, input) => {
+            return enable && input.style.borderColor === 'rgb(17, 96, 17)';
+        }, true);
+
+        const button = document.getElementById('submitButton');
+        if (enableButton) {
+            button.classList.add('activeButton');
+            button.disabled = false;
+        } else {
+            button.classList.remove('activeButton');
+            button.disabled = true;
+        }
+    });
+});
+
+const form = document.querySelector('form');
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log('akame');
+});
+
+// cleaning inputs on load
+window.onload = () => {
+    cardName.value = '';
+    securityCode.value = '';
+    cardNumber.value = '';
+    expirationDate.value = '';
+};
