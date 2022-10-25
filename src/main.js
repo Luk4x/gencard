@@ -127,10 +127,11 @@ cardNumberMasked.on('accept', () => {
 const cardName = document.getElementById('card-holder');
 const cardShowName = document.querySelector('.cc-holder .value');
 cardName.addEventListener('input', () => {
+    cardName.value = cardName.value.replace(/[0-9]/g, '');
     cardShowName.innerText = cardName.value.length > 0 ? cardName.value : 'Nome Completo';
 });
 
-const cardShowExpirationDate = document.querySelector('.cc-extra .valuec');
+const cardShowExpirationDate = document.querySelector('.cc-extra .value');
 expirationDateMasked.on('accept', () => {
     cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '00/00';
 });
