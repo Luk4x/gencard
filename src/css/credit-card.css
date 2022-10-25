@@ -11,7 +11,7 @@
 .cc-logo {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .cc-info {
@@ -58,6 +58,7 @@
 .cc-logo,
 .cc-number {
     position: relative;
+    z-index: 1;
 }
 
 .cc-bg {

@@ -7,17 +7,22 @@ const cardBgColor1 = document.querySelector('.cc-bg svg > g g:nth-child(1) path'
 const cardBgColor2 = document.querySelector('.cc-bg svg > g g:nth-child(2) path');
 const cardLogo = document.querySelector('.cc-logo span:nth-child(2) img');
 
-const setCardType = type => {
+const setCardType = (type, ext) => {
     const colors = {
         visa: ['#436d99', '#2d57f2'],
-        mastercard: ['#df6f29', '#c69347'],
-        discover: ['#FFC632', '#F73A67'],
+        mastercard: ['#FC3551', '#c69347'],
+        maestro: ['#1248FF', '#FC3551'],
+        discover: ['#F73A67', '#FFC632'],
+        jcb: ['#2BB01F', '#FE304A'],
+        unionpay: ['#3BC3EE', '#292D98'],
+        amex: ['#1238FF', '#E1E1E1'],
+        diners: ['#8EB5FF', '#0025CE'],
         default: ['#323238', '#323238']
     };
 
     cardBgColor1.setAttribute('fill', colors[type][0]);
     cardBgColor2.setAttribute('fill', colors[type][1]);
-    cardLogo.setAttribute('src', `cc-${type}.${type === 'discover' ? 'png' : 'svg'}`);
+    cardLogo.setAttribute('src', `cc-${type}.${ext ?? 'svg'}`);
 };
 globalThis.setCardType = setCardType;
 
@@ -32,13 +37,45 @@ const cardNumberPattern = {
         },
         {
             mask: '0000 0000 0000 0000',
-            regex: /(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
-            cardType: 'mastercard'
+            regex: /^(5[1-5]\d{0,2}|22[2-9]\d{0,1}|2[3-7]\d{0,2})\d{0,12}/,
+            cardType: 'mastercard',
+            ext: 'png'
         },
         {
             mask: '0000 0000 0000 0000',
             regex: /^(?:6011|65\d{0,2}|64[4-9]\d?)\d{0,12}/,
-            cardType: 'discover'
+            cardType: 'discover',
+            ext: 'png'
+        },
+        {
+            mask: '0000 0000 0000 0000',
+            regex: /^(?:35\d{0,2})\d{0,12}/,
+            cardType: 'jcb',
+            ext: 'png'
+        },
+        {
+            mask: '0000 0000 0000 0000',
+            regex: /^(?:5[0678]\d{0,2}|6304|67\d{0,2})\d{0,12}/,
+            cardType: 'maestro',
+            ext: 'png'
+        },
+        {
+            mask: '0000 0000 0000 0000',
+            regex: /^62\d{0,14}/,
+            cardType: 'unionpay',
+            ext: 'png'
+        },
+        {
+            mask: '0000 000000 00000',
+            regex: /^3[47]\d{0,13}/,
+            cardType: 'amex',
+            ext: 'png'
+        },
+        {
+            mask: '0000 000000 0000',
+            regex: /^3(?:0([0-5]|9)|[689]\d?)\d{0,11}/,
+            cardType: 'diners',
+            ext: 'png'
         },
         {
             mask: '0000 0000 0000 0000',
@@ -52,55 +89,6 @@ const cardNumberPattern = {
     }
 };
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
-/*
-[
-    {
-        mask: '0000 000000 00000',
-        regex: /^3[47]\d{0,13}/,
-        cardtype: 'american express'
-    },
-    {
-        mask: '0000 0000 0000 0000',
-        regex: /^(?:6011|65\d{0,2}|64[4-9]\d?)\d{0,12}/,
-        cardtype: 'discover'
-    },
-    {
-        mask: '0000 000000 0000',
-        regex: /^3(?:0([0-5]|9)|[689]\d?)\d{0,11}/,
-        cardtype: 'diners'
-    },
-    {
-        mask: '0000 0000 0000 0000',
-        regex: /^(5[1-5]\d{0,2}|22[2-9]\d{0,1}|2[3-7]\d{0,2})\d{0,12}/,
-        cardtype: 'mastercard'
-    },
-    {
-        mask: '0000 000000 00000',
-        regex: /^(?:2131|1800)\d{0,11}/,
-        cardtype: 'jcb15'
-    },
-    {
-        mask: '0000 0000 0000 0000',
-        regex: /^(?:35\d{0,2})\d{0,12}/,
-        cardtype: 'jcb'
-    },
-    {
-        mask: '0000 0000 0000 0000',
-        regex: /^(?:5[0678]\d{0,2}|6304|67\d{0,2})\d{0,12}/,
-        cardtype: 'maestro'
-    },
-    {
-        mask: '0000 0000 0000 0000',
-        regex: /^4\d{0,15}/,
-        cardtype: 'visa'
-    },
-    {
-        mask: '0000 0000 0000 0000',
-        regex: /^62\d{0,14}/,
-        cardtype: 'unionpay'
-    },
-]
-*/
 
 const expirationDate = document.getElementById('expiration-date');
 const expirationDatePattern = {
@@ -129,9 +117,15 @@ const securityCodeMasked = IMask(securityCode, {
 const cardShowNumber = document.querySelector('.cc-number');
 cardNumberMasked.on('accept', () => {
     cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '0000 0000 0000 0000';
-    cardNumber.style.borderColor = cardNumberMasked.value.length === 19 ? '#116011' : '#323238';
-    setCardType(cardNumberMasked.masked.currentMask.cardType);
-    console.log(cardNumberMasked.masked.currentMask.cardType);
+    setCardType(cardNumberMasked.masked.currentMask.cardType, cardNumberMasked.masked.currentMask.ext);
+
+    if (cardNumberMasked.masked.currentMask.cardType === 'amex') {
+        cardNumber.style.borderColor = cardNumberMasked.value.length === 17 ? '#116011' : '#323238';
+    } else if (cardNumberMasked.masked.currentMask.cardType === 'diners') {
+        cardNumber.style.borderColor = cardNumberMasked.value.length === 16 ? '#116011' : '#323238';
+    } else {
+        cardNumber.style.borderColor = cardNumberMasked.value.length === 19 ? '#116011' : '#323238';
+    }
 });
 
 const cardName = document.getElementById('card-holder');
