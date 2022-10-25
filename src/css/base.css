@@ -11,9 +11,7 @@
 
 :root {
     font-size: 62.5%;
-
     color: rgba(255, 255, 255, 0.87);
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -23,11 +21,9 @@
 
 body {
     font-size: 1.6rem;
-    background: #121214;
-
+    background: linear-gradient(-5deg, #202024 51%, #323238 49%);
     display: flex;
     place-items: center;
-
     min-height: 100vh;
 }
 
@@ -39,18 +35,29 @@ body {
     display: grid;
     justify-content: center;
     gap: 3.2rem;
-
-    width: 90%;
+    width: 100%;
     max-width: 42rem;
     margin: 0 auto;
-
     padding: 2.8rem 6rem 4rem;
     background: #202024;
     border: 0.1rem solid #323238;
     border-radius: 0.6rem;
+    position: relative;
+    z-index: 1;
 }
 
 #app header {
     display: flex;
     align-items: center;
+}
+
+.backgroundHighlight {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.6rem;
+    background: linear-gradient(5deg, #323238 51%, #202024 49%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
 }

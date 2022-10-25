@@ -10,7 +10,7 @@ const setCardType = type => {
     const colors = {
         visa: ['#436d99', '#2d57f2'],
         mastercard: ['#df6f29', '#c69347'],
-        default: ['black', 'gray']
+        default: ['#323238', '#323238']
     };
 
     cardBgColor1.setAttribute('fill', colors[type][0]);

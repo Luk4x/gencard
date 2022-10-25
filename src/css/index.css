@@ -1,50 +1,53 @@
-@import "base.css";
-@import "credit-card.css";
-@import "form.css";
+@import 'base.css';
+@import 'credit-card.css';
+@import 'form.css';
 
-@media (max-width: 420px) {
-  :root {
-    font-size: 50%;
-  }
+@media (max-width: 440px) {
+    :root {
+        font-size: 50%;
+    }
 
-  body {
-    background: #202024;
-  }
+    #app {
+        background: none;
+        border: none;
+    }
 
-  #app {
-    background: none;
-    border: none;
-  }
-
-  .cc-bg svg {
-    width: 100%;
-    height: auto;
-  }
+    .cc-bg svg {
+        width: 100%;
+        height: auto;
+    }
 }
 
-@media (min-width: 780px) {
-  #app {
-    grid-template-areas:
-      "A B"
-      "C B";
+@media (min-width: 840px) {
+    body {
+        padding: 30px;
+        background: linear-gradient(45deg, #202024 61.5%, #323238 39.5%);
+    }
 
-    width: fit-content;
-    max-width: fit-content;
-    padding-inline: 4.8rem;
+    #app {
+        grid-template-areas:
+            'A B'
+            'C B';
+        width: fit-content;
+        max-width: fit-content;
+        padding-inline: 4.8rem;
+        grid-template-columns: 0.8fr 1fr;
+    }
 
-    grid-template-columns: 0.8fr 1fr;
-  }
+    #app header {
+        grid-area: A;
+    }
 
-  #app header {
-    grid-area: A;
-  }
+    #app section.cc {
+        grid-area: B;
+        align-self: center;
+    }
 
-  #app section.cc {
-    grid-area: B;
-    align-self: center;
-  }
+    #app form {
+        grid-area: C;
+    }
 
-  #app form {
-    grid-area: C;
-  }
+    .backgroundHighlight {
+        background: linear-gradient(-45deg, #202024 61.5%, #323238 39.5%);
+    }
 }

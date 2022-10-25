@@ -1,68 +1,141 @@
 /* form */
 form {
-  max-width: 36rem;
-  display: grid;
-  gap: 1.6rem;
+    max-width: 36rem;
+    display: grid;
+    gap: 1.6rem;
 }
 
 form .input-wrapper {
-  display: grid;
-  gap: 0.6rem;
+    display: grid;
+    gap: 0.6rem;
 }
 
 form label {
-  font-weight: 600;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  letter-spacing: 0.01px;
-  text-transform: uppercase;
-  color: #e1e1e6;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.01px;
+    text-transform: uppercase;
+    color: #e1e1e6;
 }
 
 form input {
-  background: #121214;
-  border: 1px solid #323238;
-  border-radius: 6px;
-  height: 41px;
-  padding-inline: 1.2rem;
-
-  width: 100%;
-
-  color: white;
-  text-transform: uppercase;
+    background: #121214;
+    border: 1px solid #323238;
+    border-radius: 6px;
+    height: 41px;
+    padding-inline: 1.2rem;
+    width: 100%;
+    color: #eee;
+    text-transform: uppercase;
 }
 
 form .flex {
-  gap: 1.4rem;
+    gap: 1.4rem;
 }
 
 form .flex .input-wrapper {
-  flex: 1;
+    flex: 1;
 }
 
+/* From uiverse.io by @menezes11. Edited by @Luk4x (Github) */
 form button {
-  margin-top: 1.6rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.6rem 0;
-
-  background: #42d3ff;
-  border-radius: 0.6rem;
-
-  cursor: pointer;
-
-  border: none;
-
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 1.7rem;
-  color: #121212;
-
-  transition: filter 0.3s;
+    position: relative;
+    padding: 1.6rem 1.8rem;
+    background: #121214;
+    color: #8257e6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    transition: 0.2s;
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
 }
 
-form button:hover {
-  filter: brightness(1.1);
+.buttonDisabled {
+    cursor: progress;
+}
+
+form form button:hover {
+    box-shadow: 0 0 10px #8257e6, 0 0 25px #42d3ff, 0 0 50px #8257e6;
+    transition-delay: 0.6s;
+}
+
+form button span {
+    position: absolute;
+}
+
+form button span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8257e6);
+}
+
+form button:hover span:nth-child(1) {
+    left: 100%;
+    transition: 0.7s;
+}
+
+form button span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #42d3ff);
+}
+
+form button:hover span:nth-child(3) {
+    right: 100%;
+    transition: 0.7s;
+    transition-delay: 0.35s;
+}
+
+form button span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #8257e6);
+}
+
+form button:hover span:nth-child(2) {
+    top: 100%;
+    transition: 0.7s;
+    transition-delay: 0.17s;
+}
+
+form button span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #42d3ff);
+}
+
+form button:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 0.7s;
+    transition-delay: 0.52s;
+}
+
+form button:active {
+    background: #633bbc;
+    background: linear-gradient(to top right, #633bbc 28%, #42d3ff);
+    color: #e1e1e6;
+    box-shadow: 0 0 8px #8257e6, 0 0 8px #42d3ff, 0 0 8px #8257e6;
+    transition: 0.1s;
+}
+
+form button:active span:nth-child(1) span:nth-child(2) span:nth-child(2) span:nth-child(2) {
+    transition: none;
+    transition-delay: none;
 }
