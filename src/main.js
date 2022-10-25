@@ -1,5 +1,6 @@
 import './css/index.css';
 import IMask from 'imask';
+import swal from 'sweetalert';
 
 // Personalizing card
 const cardBgColor1 = document.querySelector('.cc-bg svg > g g:nth-child(1) path');
@@ -148,6 +149,8 @@ securityCodeMasked.on('accept', () => {
 
 // form functionality
 const inputs = [securityCode, cardName, expirationDate, cardNumber];
+const button = document.getElementById('submitButton');
+
 inputs.forEach(input => {
     // on a input in each input, verify if the color of the actual input and others if green (that is, if it is duly filled) and if all inputs are duly filled, unlock button submit
     input.addEventListener('input', () => {
@@ -155,7 +158,6 @@ inputs.forEach(input => {
             return enable && input.style.borderColor === 'rgb(17, 96, 17)';
         }, true);
 
-        const button = document.getElementById('submitButton');
         if (enableButton) {
             button.classList.add('activeButton');
             button.disabled = false;
@@ -169,7 +171,29 @@ inputs.forEach(input => {
 const form = document.querySelector('form');
 form.addEventListener('submit', e => {
     e.preventDefault();
-    console.log('akame');
+
+    let userFirstName = '';
+    for (let letter of cardName.value) {
+        if (letter === ' ') break;
+        else userFirstName += letter;
+    }
+
+    swal(`Yo ${userFirstName.toLowerCase()}!`, 'Seu cartão foi cadastrado na nossa base de dados com sucesso!', 'success').then(() => {
+        // resetting fields
+        inputs.forEach(input => {
+            input.value = '';
+            input.style.borderColor = '#323238';
+        });
+
+        cardShowName.innerText = 'NOME COMPLETO';
+        cardShowSecurityCode.innerText = '000';
+        cardShowNumber.innerText = '0000 0000 0000 0000';
+        cardShowExpirationDate.innerText = '00/00';
+        setCardType('default');
+
+        button.classList.remove('activeButton');
+        button.disabled = true;
+    });
 });
 
 // cleaning inputs on load
