@@ -11,12 +11,13 @@ const setCardType = type => {
     const colors = {
         visa: ['#436d99', '#2d57f2'],
         mastercard: ['#df6f29', '#c69347'],
+        discover: ['#FFC632', '#F73A67'],
         default: ['#323238', '#323238']
     };
 
     cardBgColor1.setAttribute('fill', colors[type][0]);
     cardBgColor2.setAttribute('fill', colors[type][1]);
-    cardLogo.setAttribute('src', `cc-${type}.svg`);
+    cardLogo.setAttribute('src', `cc-${type}.${type === 'discover' ? 'png' : 'svg'}`);
 };
 globalThis.setCardType = setCardType;
 
@@ -33,6 +34,11 @@ const cardNumberPattern = {
             mask: '0000 0000 0000 0000',
             regex: /(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
             cardType: 'mastercard'
+        },
+        {
+            mask: '0000 0000 0000 0000',
+            regex: /^(?:6011|65\d{0,2}|64[4-9]\d?)\d{0,12}/,
+            cardType: 'discover'
         },
         {
             mask: '0000 0000 0000 0000',
@@ -125,6 +131,7 @@ cardNumberMasked.on('accept', () => {
     cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '0000 0000 0000 0000';
     cardNumber.style.borderColor = cardNumberMasked.value.length === 19 ? '#116011' : '#323238';
     setCardType(cardNumberMasked.masked.currentMask.cardType);
+    console.log(cardNumberMasked.masked.currentMask.cardType);
 });
 
 const cardName = document.getElementById('card-holder');
