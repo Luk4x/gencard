@@ -28,6 +28,7 @@ form input {
     width: 100%;
     color: #eee;
     text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
 }
 
 form .flex {

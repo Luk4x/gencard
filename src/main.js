@@ -17,12 +17,15 @@ const setCardType = (type, ext) => {
         unionpay: ['#3BC3EE', '#292D98'],
         amex: ['#1238FF', '#E1E1E1'],
         diners: ['#8EB5FF', '#0025CE'],
+        invalid: ['#633bbc', '#601111'],
         default: ['#323238', '#323238']
     };
 
     cardBgColor1.setAttribute('fill', colors[type][0]);
     cardBgColor2.setAttribute('fill', colors[type][1]);
+
     cardLogo.setAttribute('src', `cc-${type}.${ext ?? 'svg'}`);
+    cardLogo.style.opacity = type && type !== 'default' ? '1' : '0';
 };
 globalThis.setCardType = setCardType;
 
@@ -124,7 +127,17 @@ cardNumberMasked.on('accept', () => {
     } else if (cardNumberMasked.masked.currentMask.cardType === 'diners') {
         cardNumber.style.borderColor = cardNumberMasked.value.length === 16 ? '#116011' : '#323238';
     } else {
-        cardNumber.style.borderColor = cardNumberMasked.value.length === 19 ? '#116011' : '#323238';
+        if (cardNumberMasked.value.length === 19) {
+            if (cardNumberMasked.masked.currentMask.cardType && cardNumberMasked.masked.currentMask.cardType !== 'default') {
+                cardNumber.style.borderColor = '#116011';
+            } else {
+                cardNumber.style.borderColor = '#601111';
+                setCardType('invalid', 'png');
+                cardShowNumber.innerText = 'Número Inválido';
+            }
+        } else {
+            cardNumber.style.borderColor = '#323238';
+        }
     }
 });
 
