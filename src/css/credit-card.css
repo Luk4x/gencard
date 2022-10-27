@@ -1,11 +1,13 @@
 .cc {
     width: 36rem;
-    height: 23rem;
+    height: 23.5rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
+    background: #202024;
+    border-radius: 15px;
 }
 
 .cc-logo {

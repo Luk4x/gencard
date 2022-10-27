@@ -1,6 +1,7 @@
 import './css/index.css';
 import IMask from 'imask';
 import swal from 'sweetalert';
+import domtoimage from 'dom-to-image';
 
 // Personalizing card
 const cardBgColor1 = document.querySelector('.cc-bg svg > g g:nth-child(1) path');
@@ -123,13 +124,13 @@ cardNumberMasked.on('accept', () => {
     setCardType(cardNumberMasked.masked.currentMask.cardType, cardNumberMasked.masked.currentMask.ext);
 
     if (cardNumberMasked.masked.currentMask.cardType === 'amex') {
-        cardNumber.style.borderColor = cardNumberMasked.value.length === 17 ? '#116011' : '#323238';
+        cardNumber.style.borderColor = cardNumberMasked.value.length === 17 ? '#633bbc' : '#323238';
     } else if (cardNumberMasked.masked.currentMask.cardType === 'diners') {
-        cardNumber.style.borderColor = cardNumberMasked.value.length === 16 ? '#116011' : '#323238';
+        cardNumber.style.borderColor = cardNumberMasked.value.length === 16 ? '#633bbc' : '#323238';
     } else {
         if (cardNumberMasked.value.length === 19) {
             if (cardNumberMasked.masked.currentMask.cardType && cardNumberMasked.masked.currentMask.cardType !== 'default') {
-                cardNumber.style.borderColor = '#116011';
+                cardNumber.style.borderColor = '#633bbc';
             } else {
                 cardNumber.style.borderColor = '#601111';
                 setCardType('invalid', 'png');
@@ -146,19 +147,19 @@ const cardShowName = document.querySelector('.cc-holder .value');
 cardName.addEventListener('input', () => {
     cardName.value = cardName.value.replace(/[0-9]/g, '');
     cardShowName.innerText = cardName.value.length > 0 ? cardName.value : 'Nome Completo';
-    cardName.style.borderColor = cardName.value.match(/[a-zA-Z] [a-zA-Z]/) ? '#116011' : '#323238';
+    cardName.style.borderColor = cardName.value.match(/[a-zA-Z] [a-zA-Z]/) ? '#633bbc' : '#323238';
 });
 
 const cardShowExpirationDate = document.querySelector('.cc-extra .value');
 expirationDateMasked.on('accept', () => {
     cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '00/00';
-    expirationDate.style.borderColor = expirationDateMasked.value.length === 5 ? '#116011' : '#323238';
+    expirationDate.style.borderColor = expirationDateMasked.value.length === 5 ? '#633bbc' : '#323238';
 });
 
 const cardShowSecurityCode = document.querySelector('.cc-security .value');
 securityCodeMasked.on('accept', () => {
     cardShowSecurityCode.innerText = securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '000';
-    securityCode.style.borderColor = securityCodeMasked.value.length === 3 ? '#116011' : '#323238';
+    securityCode.style.borderColor = securityCodeMasked.value.length === 3 ? '#633bbc' : '#323238';
 });
 
 // form functionality
@@ -169,7 +170,7 @@ inputs.forEach(input => {
     // on a input in each input, verify if the color of the actual input and others if green (that is, if it is duly filled) and if all inputs are duly filled, unlock button submit
     input.addEventListener('input', () => {
         const enableButton = inputs.reduce((enable, input) => {
-            return enable && input.style.borderColor === 'rgb(17, 96, 17)';
+            return enable && input.style.borderColor === 'rgb(99, 59, 188)';
         }, true);
 
         if (enableButton) {
@@ -193,20 +194,34 @@ form.addEventListener('submit', e => {
     }
 
     swal(`Yo ${userFirstName.toLowerCase()}!`, 'Seu cartão foi cadastrado na nossa base de dados com sucesso!', 'success').then(() => {
-        // resetting fields
-        inputs.forEach(input => {
-            input.value = '';
-            input.style.borderColor = '#323238';
-        });
+        const card = document.querySelector('.cc');
+        domtoimage
+            .toPng(card)
+            .then(cardUrl => {
+                // generating card image
+                const cardImgLink = document.createElement('a');
+                cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
+                cardImgLink.href = cardUrl;
+                cardImgLink.click();
+                navigator.clipboard.writeText(cardUrl);
+            })
+            .then(() => {
+                // resetting fields
+                inputs.forEach(input => {
+                    input.value = '';
+                    input.style.borderColor = '#323238';
+                });
 
-        cardShowName.innerText = 'NOME COMPLETO';
-        cardShowSecurityCode.innerText = '000';
-        cardShowNumber.innerText = '0000 0000 0000 0000';
-        cardShowExpirationDate.innerText = '00/00';
-        setCardType('default');
+                cardShowName.innerText = 'NOME COMPLETO';
+                cardShowSecurityCode.innerText = '000';
+                cardShowNumber.innerText = '0000 0000 0000 0000';
+                cardShowExpirationDate.innerText = '00/00';
+                setCardType('default');
 
-        button.classList.remove('activeButton');
-        button.disabled = true;
+                button.classList.remove('activeButton');
+                button.disabled = true;
+            })
+            .catch(error => console.error(error));
     });
 });
 

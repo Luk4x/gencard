@@ -21,7 +21,7 @@ form label {
 
 form input {
     background: #121214;
-    border: 2px solid #323238;
+    border: 1px solid #323238;
     border-radius: 6px;
     height: 41px;
     padding-inline: 1.2rem;

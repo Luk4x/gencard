@@ -17,6 +17,14 @@
     background: #202024;
 }
 
+.swal-icon--success {
+    border-color: #42d3ff;
+}
+
+.swal-icon--success__line {
+    background-color: #42d3ff;
+}
+
 .swal-text {
     color: #e1e1e6;
     font-size: 17px;
@@ -28,8 +36,8 @@
     text-align: center;
     text-transform: capitalize;
     font-size: 33px;
-    color: #808080;
-    border-bottom: 2px solid #8257e6;
+    color: #633bbc;
+    border-bottom: 2px solid #42d3ff;
     border-radius: 2px;
     display: inline;
 }
@@ -59,6 +67,10 @@ button.swal-button.swal-button--confirm:hover {
     .cc-bg svg {
         width: 100%;
         height: auto;
+    }
+
+    body {
+        background: linear-gradient(5deg, #323238 50.5%, #202024 49.5%);
     }
 }
 
