@@ -59,12 +59,17 @@ form button {
     cursor: not-allowed;
     opacity: 0.65;
     background: #201214;
+    height: 49px;
 }
 
 .activeButton {
     cursor: pointer;
     opacity: 1;
     background: #121214;
+}
+
+.hideButtonElement {
+    display: none !important;
 }
 
 form button span {
@@ -138,4 +143,51 @@ form .activeButton:active {
 form button:active span:nth-child(1) span:nth-child(2) span:nth-child(2) span:nth-child(2) {
     transition: none;
     transition-delay: none;
+}
+
+.waveform {
+    --uib-size: 28px;
+    --uib-speed: 1s;
+    --uib-color: #8257e6;
+    --uib-line-weight: 3.5px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--uib-size);
+    height: calc(var(--uib-size) * 0.9);
+}
+
+.waveform__bar {
+    width: var(--uib-line-weight);
+    height: 100%;
+    background-color: var(--uib-color);
+}
+
+.waveform__bar:nth-child(1) {
+    animation: grow var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.45) infinite;
+}
+
+.waveform__bar:nth-child(2) {
+    animation: grow var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.3) infinite;
+}
+
+.waveform__bar:nth-child(3) {
+    animation: grow var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.15) infinite;
+}
+
+.waveform__bar:nth-child(4) {
+    animation: grow var(--uib-speed) ease-in-out infinite;
+}
+
+@keyframes grow {
+    0%,
+    100% {
+        transform: scaleY(0.3);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
 }

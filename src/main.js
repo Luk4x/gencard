@@ -165,6 +165,9 @@ securityCodeMasked.on('accept', () => {
 // form functionality
 const inputs = [securityCode, cardName, expirationDate, cardNumber];
 const button = document.getElementById('submitButton');
+const buttonText = document.querySelector('#submitButton p');
+const buttonLoader = document.querySelector('.waveform');
+const buttonImg = document.querySelector('#submitButton img');
 
 inputs.forEach(input => {
     // on a input in each input, verify if the color of the actual input and others if green (that is, if it is duly filled) and if all inputs are duly filled, unlock button submit
@@ -173,12 +176,30 @@ inputs.forEach(input => {
             return enable && input.style.borderColor === 'rgb(99, 59, 188)';
         }, true);
 
+        const isInputEmpty = inputs.reduce((isEmpty, input) => {
+            return isEmpty && input.value.length === 0;
+        }, true);
+
         if (enableButton) {
             button.classList.add('activeButton');
             button.disabled = false;
+
+            buttonText.classList.remove('hideButtonElement');
+            buttonLoader.classList.add('hideButtonElement');
         } else {
+            console.log(isInputEmpty);
+
+            if (isInputEmpty) {
+                buttonLoader.classList.add('hideButtonElement');
+                buttonImg.classList.remove('hideButtonElement');
+            } else {
+                buttonLoader.classList.remove('hideButtonElement');
+                buttonImg.classList.add('hideButtonElement');
+            }
+
             button.classList.remove('activeButton');
             button.disabled = true;
+            buttonText.classList.add('hideButtonElement');
         }
     });
 });
