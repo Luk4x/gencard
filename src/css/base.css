@@ -11,7 +11,7 @@
 
 :root {
     font-size: 62.5%;
-    color: rgba(255, 255, 255, 0.87);
+    color: #ffffffde;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -49,6 +49,18 @@ body {
 #app header {
     display: flex;
     align-items: center;
+}
+
+#app header h1 {
+    font-size: 24.5px;
+    margin-right: 10px;
+    color: #e1e1e6;
+    font-weight: 300;
+}
+
+#app header h1 span {
+    font-weight: 400;
+    color: #6a6a6c;
 }
 
 .backgroundHighlight {

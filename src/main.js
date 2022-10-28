@@ -193,7 +193,7 @@ form.addEventListener('submit', e => {
         else userFirstName += letter;
     }
 
-    swal(`Yo ${userFirstName.toLowerCase()}!`, 'Seu cartão foi cadastrado na nossa base de dados com sucesso!', 'success').then(() => {
+    swal(`Yo ${userFirstName.toLowerCase()}!`, 'Seu cartão foi gerado com sucesso!', 'success').then(() => {
         const card = document.querySelector('.cc');
         domtoimage
             .toPng(card)
@@ -203,7 +203,6 @@ form.addEventListener('submit', e => {
                 cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
                 cardImgLink.href = cardUrl;
                 cardImgLink.click();
-                navigator.clipboard.writeText(cardUrl);
             })
             .then(() => {
                 // resetting fields
