@@ -187,8 +187,6 @@ inputs.forEach(input => {
             buttonText.classList.remove('hideButtonElement');
             buttonLoader.classList.add('hideButtonElement');
         } else {
-            console.log(isInputEmpty);
-
             if (isInputEmpty) {
                 buttonLoader.classList.add('hideButtonElement');
                 buttonImg.classList.remove('hideButtonElement');
@@ -246,12 +244,14 @@ form.addEventListener('submit', async e => {
         },
         button: 'Download'
     })
-        .then(() => {
+        .then(download => {
             // generating card download link
-            const cardImgLink = document.createElement('a');
-            cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
-            cardImgLink.href = cardUrl;
-            cardImgLink.click();
+            if (download) {
+                const cardImgLink = document.createElement('a');
+                cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
+                cardImgLink.href = cardUrl;
+                cardImgLink.click();
+            }
         })
         .catch(error => console.error(error));
 });
