@@ -21,7 +21,7 @@ form label {
 
 form input {
     background: #121214;
-    border: 1px solid #323238;
+    border: 2px solid #323238;
     border-radius: 6px;
     height: 41px;
     padding-inline: 1.2rem;
@@ -146,7 +146,7 @@ form button:active span:nth-child(1) span:nth-child(2) span:nth-child(2) span:nt
 }
 
 .waveform {
-    --uib-size: 28px;
+    --uib-size: 25px;
     --uib-speed: 1s;
     --uib-color: #8257e6;
     --uib-line-weight: 3.5px;

@@ -205,7 +205,7 @@ inputs.forEach(input => {
 });
 
 const form = document.querySelector('form');
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
     e.preventDefault();
 
     let userFirstName = '';
@@ -214,35 +214,46 @@ form.addEventListener('submit', e => {
         else userFirstName += letter;
     }
 
-    swal(`Yo ${userFirstName.toLowerCase()}!`, 'Seu cartão foi gerado com sucesso!', 'success').then(() => {
-        const card = document.querySelector('.cc');
-        domtoimage
-            .toPng(card)
-            .then(cardUrl => {
-                // generating card image
-                const cardImgLink = document.createElement('a');
-                cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
-                cardImgLink.href = cardUrl;
-                cardImgLink.click();
-            })
-            .then(() => {
-                // resetting fields
-                inputs.forEach(input => {
-                    input.value = '';
-                    input.style.borderColor = '#323238';
-                });
+    // generating card image url
+    const card = document.querySelector('.cc');
+    const cardUrl = await domtoimage.toPng(card);
 
-                cardShowName.innerText = 'NOME COMPLETO';
-                cardShowSecurityCode.innerText = '000';
-                cardShowNumber.innerText = '0000 0000 0000 0000';
-                cardShowExpirationDate.innerText = '00/00';
-                setCardType('default');
-
-                button.classList.remove('activeButton');
-                button.disabled = true;
-            })
-            .catch(error => console.error(error));
+    // resetting fields
+    inputs.forEach(input => {
+        input.value = '';
+        input.style.borderColor = '#323238';
     });
+
+    cardShowName.innerText = 'NOME COMPLETO';
+    cardShowSecurityCode.innerText = '000';
+    cardShowNumber.innerText = '0000 0000 0000 0000';
+    cardShowExpirationDate.innerText = '00/00';
+    setCardType('default');
+
+    button.classList.remove('activeButton');
+    button.disabled = true;
+
+    swal({
+        title: `Yo ${userFirstName.toLowerCase()}!`,
+        text: 'Seu cartão foi gerado com sucesso!',
+        icon: 'success',
+        content: {
+            element: 'img',
+            attributes: {
+                src: cardUrl,
+                alt: `${userFirstName.toUpperCase()} GC Card image`
+            }
+        },
+        button: 'Download'
+    })
+        .then(() => {
+            // generating card download link
+            const cardImgLink = document.createElement('a');
+            cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
+            cardImgLink.href = cardUrl;
+            cardImgLink.click();
+        })
+        .catch(error => console.error(error));
 });
 
 // cleaning inputs on load
