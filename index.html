@@ -12,12 +12,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
     </head>
     <body>
-        <div id="app">
+        <main id="app">
             <header>
                 <img src="/card.png" alt="contactless icon" />
                 <h1><span>Gen</span>Card</h1>
             </header>
-
             <section class="cc">
                 <div class="cc-bg">
                     <svg width="360" height="230" viewBox="0 0 360 230" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,20 +45,16 @@
                         </defs>
                     </svg>
                 </div>
-
                 <div class="cc-logo">
                     <span><img src="/cc-icon.svg" alt="ícone padrão de cartão" /></span>
                     <span><img src="/cc-default.svg" alt="ícone do cartão de crédito selecionado" style="transition: all 1s ease-in-out; opacity: 0" /></span>
                 </div>
-
                 <div class="cc-info">
                     <div class="cc-number">0000 0000 0000 0000</div>
-
                     <div class="cc-holder">
                         <div class="label">Nome do titular</div>
                         <div class="value">Nome Completo</div>
                     </div>
-
                     <div class="cc-extra">
                         <div class="cc-expiration">
                             <div class="label">Expiração</div>
@@ -73,18 +68,15 @@
                     </div>
                 </div>
             </section>
-
             <form action="">
                 <div class="input-wrapper">
                     <label for="card-number">Número do cartão</label>
                     <input id="card-number" required />
                 </div>
-
                 <div class="input-wrapper">
                     <label for="card-holder">Nome do titular</label>
                     <input id="card-holder" required />
                 </div>
-
                 <div class="flex">
                     <div class="input-wrapper">
                         <label for="expiration-date">Expiração</label>
@@ -96,7 +88,6 @@
                         <input id="security-code" required />
                     </div>
                 </div>
-
                 <button id="submitButton" disabled>
                     <span></span>
                     <span></span>
@@ -112,10 +103,37 @@
                     </div>
                 </button>
             </form>
-
             <div class="backgroundHighlight"></div>
-        </div>
-
+        </main>
+        <footer class="links">
+            <ul class="links-list">
+                <li>
+                    <a href="https://github.com/Luk4x" target="_blank" rel="external">
+                        <img src="/github-logo.png" alt="github logo" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/lucasmacielf/" target="_blank" rel="external">
+                        <img src="/linkedin-logo.png" alt="linkedIn logo" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/lu_k4x/" target="_blank" rel="external noopener noreferrer">
+                        <img src="/instagram-logo.png" alt="instagram logo" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/5522996112570?text=Yo,%20sinta-se%20livre%20para%20entrar%20em%20contato%20comigo." target="_blank" rel="external">
+                        <img src="/whatsapp-logo.png" alt="whatsapp logo" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://t.me/lu_k4x" target="_blank" rel="external">
+                        <img src="/telegram-logo.png" alt="telegram logo" />
+                    </a>
+                </li>
+            </ul>
+        </footer>
         <script type="module" src="/src/main.js"></script>
     </body>
 </html>

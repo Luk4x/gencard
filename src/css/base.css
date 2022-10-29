@@ -75,3 +75,30 @@ body {
     right: 0;
     z-index: -1;
 }
+
+.links {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 8px solid #633bbc;
+    border-radius: 20px;
+    padding: 0 5px;
+}
+
+.links-list {
+    display: flex;
+    list-style-type: none;
+    gap: 8px;
+}
+
+.links-list li a img {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s ease-in-out;
+}
+
+.links-list li a img:hover {
+    opacity: 1;
+    transform: scale(0.9);
+}
