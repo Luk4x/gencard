@@ -1,0 +1,58 @@
+@import 'base';
+@import 'credit-card';
+@import 'form';
+@import 'swal';
+
+@media (max-width: 440px) {
+    :root {
+        font-size: 50%;
+    }
+
+    body {
+        background: linear-gradient(5deg, #323238 50.5%, #202024 49.5%);
+
+        #app {
+            background: none;
+            border: none;
+
+            .cc-bg svg {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+@media (min-width: 840px) {
+    body {
+        padding: 30px;
+        background: linear-gradient(45deg, #202024 61.5%, #323238 39.5%);
+
+        #app {
+            grid-template-areas:
+                'A B'
+                'C B';
+            width: fit-content;
+            max-width: fit-content;
+            padding-inline: 4.8rem;
+            grid-template-columns: 0.8fr 1fr;
+
+            header {
+                grid-area: A;
+            }
+
+            section.cc {
+                grid-area: B;
+                align-self: center;
+            }
+
+            form {
+                grid-area: C;
+            }
+        }
+
+        .backgroundHighlight {
+            background: linear-gradient(-45deg, #202024 61.5%, #323238 39.5%);
+        }
+    }
+}

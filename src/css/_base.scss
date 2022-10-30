@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Inter, sans-serif;
+}
+
+:root {
+    font-size: 62.5%;
+    color: #ffffffde;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 1.6rem;
+    background: linear-gradient(-5deg, #202024 51%, #323238 49%);
+    display: flex;
+    place-items: center;
+    min-height: 100vh;
+
+    .flex {
+        display: flex;
+    }
+
+    #app {
+        display: grid;
+        justify-content: center;
+        gap: 3.2rem;
+        width: 100%;
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 2.8rem 6rem 4rem;
+        background: #202024;
+        border: 1px solid #323238;
+        border-radius: 0.6rem;
+        position: relative;
+        z-index: 1;
+
+        header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #633bbc;
+            width: 148px;
+
+            h1 {
+                font-size: 24.5px;
+                margin-left: 8px;
+                color: #e1e1e6;
+                font-weight: 300;
+            }
+
+            span {
+                font-weight: 400;
+                color: #6a6a6c;
+            }
+        }
+    }
+
+    .backgroundHighlight {
+        height: 100%;
+        width: 100%;
+        border-radius: 0.6rem;
+        background: linear-gradient(5deg, #323238 51%, #202024 49%);
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    .links {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom: 8px solid #633bbc;
+        border-radius: 20px;
+        padding: 0 5px;
+
+        .links-list {
+            display: flex;
+            list-style-type: none;
+            gap: 8px;
+
+            li a img {
+                cursor: pointer;
+                opacity: 0.7;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    opacity: 1;
+                    transform: scale(0.9);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+.swal-overlay {
+    background-color: #8257e670;
+
+    .swal-modal {
+        background-color: #202024;
+        border: 2px solid #323238;
+
+        .swal-icon::before,
+        .swal-icon::after,
+        .swal-icon--success__hide-corners {
+            background: #202024;
+        }
+
+        .swal-icon--success {
+            border-color: #42d3ff;
+        }
+
+        .swal-icon--success__line {
+            background-color: #42d3ff;
+        }
+
+        .swal-text {
+            color: #e1e1e6;
+            font-size: 17px;
+            text-align: center;
+            margin-top: 30px;
+            display: block;
+        }
+
+        .swal-title {
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 33px;
+            color: #633bbc;
+            border-bottom: 2px solid #42d3ff;
+            border-radius: 2px;
+            display: inline;
+        }
+
+        .swal-content__img {
+            width: 100%;
+            max-width: 288px;
+        }
+
+        .swal-button.swal-button--confirm {
+            color: #e1e1e6;
+            background: #8257e6;
+            padding: 15px 35px;
+            outline: 2px solid #42d3ff;
+            transition: 0.2s all ease-in-out;
+
+            &:hover {
+                background: #633bbc;
+            }
+        }
+    }
+}

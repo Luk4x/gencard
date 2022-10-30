@@ -1,0 +1,193 @@
+/* form */
+form {
+    max-width: 36rem;
+    display: grid;
+    gap: 1.6rem;
+
+    .input-wrapper {
+        display: grid;
+        gap: 0.6rem;
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.01px;
+        text-transform: uppercase;
+        color: #e1e1e6;
+    }
+
+    input {
+        background: #121214;
+        border: 2px solid #323238;
+        border-radius: 6px;
+        height: 41px;
+        padding-inline: 1.2rem;
+        width: 100%;
+        color: #eee;
+        text-transform: uppercase;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .flex {
+        gap: 1.4rem;
+
+        .input-wrapper {
+            flex: 1;
+        }
+    }
+
+    /* From uiverse.io by @menezes11. Converted to Sass and edited by @Luk4x (Github) */
+    button {
+        position: relative;
+        padding: 1.6rem 1.8rem;
+        color: #8257e6;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        overflow: hidden;
+        transition: 0.2s;
+        border-radius: 0.5em;
+        margin-top: 1.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        cursor: not-allowed;
+        opacity: 0.65;
+        background: #201214;
+        height: 49px;
+
+        span {
+            position: absolute;
+
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}) {
+                    @if ($i == 1) {
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(90deg, transparent, #8257e6);
+                    } @else if ($i == 2) {
+                        top: -100%;
+                        right: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: linear-gradient(180deg, transparent, #8257e6);
+                    } @else if ($i == 3) {
+                        bottom: 0;
+                        right: -100%;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(90deg, transparent, #42d3ff);
+                    } @else {
+                        bottom: -100%;
+                        left: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: linear-gradient(360deg, transparent, #42d3ff);
+                    }
+                }
+            }
+        }
+
+        &:active {
+            @for $i from 1 through 4 {
+                span:nth-child(#{$i}) {
+                    transition: none;
+                    transition-delay: none;
+                }
+            }
+        }
+    }
+
+    .activeButton {
+        cursor: pointer;
+        opacity: 1;
+        background: #121214;
+
+        &:hover {
+            @for $i from 1 through 4 {
+                span:nth-child(#{$i}) {
+                    @if ($i == 1) {
+                        left: 100%;
+                        transition: 0.7s;
+                    } @else if ($i == 2) {
+                        top: 100%;
+                        transition: 0.7s;
+                        transition-delay: 0.17s;
+                    } @else if ($i == 3) {
+                        right: 100%;
+                        transition: 0.7s;
+                        transition-delay: 0.35s;
+                    } @else {
+                        bottom: 100%;
+                        transition: 0.7s;
+                        transition-delay: 0.52s;
+                    }
+                }
+            }
+        }
+
+        &:active {
+            background: #633bbc;
+            background: linear-gradient(to top right, #633bbc 28%, #42d3ff);
+            color: #e1e1e6;
+            box-shadow: 0 0 8px #8257e6, 0 0 8px #42d3ff, 0 0 8px #8257e6;
+            transition: 0.1s;
+            transition-delay: none;
+        }
+    }
+
+    .hideButtonElement {
+        display: none !important;
+    }
+}
+
+.waveform {
+    $uib-size: 25px;
+    $uib-speed: 1s;
+    $uib-color: #8257e6;
+    $uib-line-weight: 3.5px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: $uib-size;
+    height: calc($uib-size * 0.9);
+
+    .waveform__bar {
+        width: $uib-line-weight;
+        height: 100%;
+        background-color: $uib-color;
+
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) {
+                @if ($i == 1) {
+                    animation: grow $uib-speed ease-in-out calc($uib-speed * -0.45) infinite;
+                } @else if ($i == 2) {
+                    animation: grow $uib-speed ease-in-out calc($uib-speed * -0.3) infinite;
+                } @else if ($i == 3) {
+                    animation: grow $uib-speed ease-in-out calc($uib-speed * -0.15) infinite;
+                } @else {
+                    animation: grow $uib-speed ease-in-out infinite;
+                }
+            }
+        }
+
+        @keyframes grow {
+            0%,
+            100% {
+                transform: scaleY(0.3);
+            }
+
+            50% {
+                transform: scaleY(1);
+            }
+        }
+    }
+}
