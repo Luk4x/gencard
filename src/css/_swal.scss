@@ -2,25 +2,25 @@
     background-color: #8257e670;
 
     .swal-modal {
-        background-color: #202024;
-        border: 2px solid #323238;
+        background-color: $neutral-color1;
+        border: 2px solid $neutral-color2;
 
         .swal-icon::before,
         .swal-icon::after,
         .swal-icon--success__hide-corners {
-            background: #202024;
+            background: $neutral-color1;
         }
 
         .swal-icon--success {
-            border-color: #42d3ff;
+            border-color: $secondary-color;
         }
 
         .swal-icon--success__line {
-            background-color: #42d3ff;
+            background-color: $secondary-color;
         }
 
         .swal-text {
-            color: #e1e1e6;
+            color: $text-color;
             font-size: 17px;
             text-align: center;
             margin-top: 30px;
@@ -31,8 +31,8 @@
             text-align: center;
             text-transform: capitalize;
             font-size: 33px;
-            color: #633bbc;
-            border-bottom: 2px solid #42d3ff;
+            color: $dark-primary-color;
+            border-bottom: 2px solid $secondary-color;
             border-radius: 2px;
             display: inline;
         }
@@ -43,14 +43,14 @@
         }
 
         .swal-button.swal-button--confirm {
-            color: #e1e1e6;
-            background: #8257e6;
+            color: $text-color;
+            background: $primary-color;
             padding: 15px 35px;
-            outline: 2px solid #42d3ff;
+            outline: 2px solid $secondary-color;
             transition: 0.2s all ease-in-out;
 
             &:hover {
-                background: #633bbc;
+                background: $dark-primary-color;
             }
         }
     }

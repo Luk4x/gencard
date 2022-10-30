@@ -1,3 +1,11 @@
+$primary-color: #8257e6;
+$dark-primary-color: #633bbc;
+$secondary-color: #42d3ff;
+$neutral-color1: #202024;
+$neutral-color2: #323238;
+$neutral-color3: #121214;
+$text-color: #e1e1e6;
+
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +29,7 @@
 
 body {
     font-size: 1.6rem;
-    background: linear-gradient(-5deg, #202024 51%, #323238 49%);
+    background: linear-gradient(-5deg, $neutral-color1 51%, $neutral-color2 49%);
     display: flex;
     place-items: center;
     min-height: 100vh;
@@ -38,22 +46,23 @@ body {
         max-width: 42rem;
         margin: 0 auto;
         padding: 2.8rem 6rem 4rem;
-        background: #202024;
-        border: 1px solid #323238;
+        background: $neutral-color1;
+        border: 2px solid $neutral-color2;
         border-radius: 0.6rem;
         position: relative;
         z-index: 1;
+        background: linear-gradient(5deg, $neutral-color2 51%, $neutral-color1 49%);
 
         header {
             display: flex;
             align-items: center;
-            border-bottom: 2px solid #633bbc;
+            border-bottom: 2px solid $dark-primary-color;
             width: 148px;
 
             h1 {
                 font-size: 24.5px;
                 margin-left: 8px;
-                color: #e1e1e6;
+                color: $text-color;
                 font-weight: 300;
             }
 
@@ -64,23 +73,12 @@ body {
         }
     }
 
-    .backgroundHighlight {
-        height: 100%;
-        width: 100%;
-        border-radius: 0.6rem;
-        background: linear-gradient(5deg, #323238 51%, #202024 49%);
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: -1;
-    }
-
     .links {
         position: absolute;
         bottom: 40px;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom: 8px solid #633bbc;
+        border-bottom: 8px solid $dark-primary-color;
         border-radius: 20px;
         padding: 0 5px;
 

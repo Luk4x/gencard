@@ -228,6 +228,8 @@ form.addEventListener('submit', async e => {
     cardShowExpirationDate.innerText = '00/00';
     setCardType('default');
 
+    buttonText.classList.add('hideButtonElement');
+    buttonImg.classList.remove('hideButtonElement');
     button.classList.remove('activeButton');
     button.disabled = true;
 

@@ -9,7 +9,7 @@
     }
 
     body {
-        background: linear-gradient(5deg, #323238 50.5%, #202024 49.5%);
+        background: linear-gradient(5deg, $neutral-color2 50.5%, $neutral-color1 49.5%);
 
         #app {
             background: none;
@@ -26,7 +26,7 @@
 @media (min-width: 840px) {
     body {
         padding: 30px;
-        background: linear-gradient(45deg, #202024 61.5%, #323238 39.5%);
+        background: linear-gradient(45deg, $neutral-color1 61.5%, $neutral-color2 39.5%);
 
         #app {
             grid-template-areas:
@@ -36,6 +36,7 @@
             max-width: fit-content;
             padding-inline: 4.8rem;
             grid-template-columns: 0.8fr 1fr;
+            background: linear-gradient(-45deg, $neutral-color1 61.5%, $neutral-color2 39.5%);
 
             header {
                 grid-area: A;
@@ -49,10 +50,6 @@
             form {
                 grid-area: C;
             }
-        }
-
-        .backgroundHighlight {
-            background: linear-gradient(-45deg, #202024 61.5%, #323238 39.5%);
         }
     }
 }
