@@ -2,6 +2,15 @@ import './css/index.css';
 import IMask from 'imask';
 import swal from 'sweetalert';
 import domtoimage from 'dom-to-image';
+import VanillaTilt from 'vanilla-tilt';
+
+// card hover effect
+const card = document.querySelector('.cc');
+VanillaTilt.init(card, {
+    max: 20,
+    speed: 350,
+    glare: true
+});
 
 // Personalizing card
 const cardBgColor1 = document.querySelector('.cc-bg svg > g g:nth-child(1) path');
@@ -220,7 +229,6 @@ form.addEventListener('submit', e => {
         }
 
         // generating card image url
-        const card = document.querySelector('.cc');
         const cardUrl = await domtoimage.toPng(card);
 
         // resetting fields

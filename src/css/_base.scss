@@ -118,7 +118,6 @@ body {
         top: 45%;
         right: 45%;
         transform: translate(-50%);
-        z-index: 1;
         opacity: 0;
 
         &::before,
@@ -232,5 +231,6 @@ body {
     .showOrbit {
         transition: all 0.8s ease-in-out;
         opacity: 1;
+        z-index: 1;
     }
 }
