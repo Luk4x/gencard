@@ -37,7 +37,7 @@ const setCardType = (type, ext) => {
     cardLogo.setAttribute('src', `cc-${type}.${ext ?? 'svg'}`);
     const typeCheck = type && type !== 'default';
     cardLogo.style.opacity = typeCheck ? '1' : '0';
-    cardLogo.style.transform = typeCheck ? 'translateY(0)' : 'translateY(-10px)';
+    cardLogo.style.transform = typeCheck ? 'translateY(0)' : 'translateY(-5px)';
 };
 globalThis.setCardType = setCardType;
 
