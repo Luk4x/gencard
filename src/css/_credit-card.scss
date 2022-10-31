@@ -1,27 +1,32 @@
 .cc {
     width: 36rem;
-    height: 23.5rem;
+    height: 24rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
     background: $neutral-color1;
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid #ffffff20;
 
     .cc-bg {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background: no-repeat center/cover;
-        background-image: url('/cc-bg.svg');
     }
 
     .cc-logo {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+
+        span:nth-child(2) img {
+            transition: all 0.8s ease-in-out;
+            opacity: 0;
+            max-height: 35px;
+            transform: translateY(-10px);
+        }
     }
 
     .cc-info {

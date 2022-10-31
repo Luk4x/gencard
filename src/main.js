@@ -35,7 +35,9 @@ const setCardType = (type, ext) => {
     cardBgColor2.setAttribute('fill', colors[type][1]);
 
     cardLogo.setAttribute('src', `cc-${type}.${ext ?? 'svg'}`);
-    cardLogo.style.opacity = type && type !== 'default' ? '1' : '0';
+    const typeCheck = type && type !== 'default';
+    cardLogo.style.opacity = typeCheck ? '1' : '0';
+    cardLogo.style.transform = typeCheck ? 'translateY(0)' : 'translateY(-10px)';
 };
 globalThis.setCardType = setCardType;
 
@@ -129,7 +131,7 @@ const securityCodeMasked = IMask(securityCode, {
 // Changing card
 const cardShowNumber = document.querySelector('.cc-number');
 cardNumberMasked.on('accept', () => {
-    cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '0000 0000 0000 0000';
+    cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '#### #### #### ####';
     setCardType(cardNumberMasked.masked.currentMask.cardType, cardNumberMasked.masked.currentMask.ext);
 
     if (cardNumberMasked.masked.currentMask.cardType === 'amex') {
@@ -161,13 +163,13 @@ cardName.addEventListener('input', () => {
 
 const cardShowExpirationDate = document.querySelector('.cc-extra .value');
 expirationDateMasked.on('accept', () => {
-    cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '00/00';
+    cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '##/##';
     expirationDate.style.borderColor = expirationDateMasked.value.length === 5 ? '#633bbc' : '#323238';
 });
 
 const cardShowSecurityCode = document.querySelector('.cc-security .value');
 securityCodeMasked.on('accept', () => {
-    cardShowSecurityCode.innerText = securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '000';
+    cardShowSecurityCode.innerText = securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '###';
     securityCode.style.borderColor = securityCodeMasked.value.length === 3 ? '#633bbc' : '#323238';
 });
 
@@ -238,9 +240,9 @@ form.addEventListener('submit', e => {
         });
 
         cardShowName.innerText = 'NOME COMPLETO';
-        cardShowSecurityCode.innerText = '000';
-        cardShowNumber.innerText = '0000 0000 0000 0000';
-        cardShowExpirationDate.innerText = '00/00';
+        cardShowSecurityCode.innerText = '###';
+        cardShowNumber.innerText = '#### #### #### ####';
+        cardShowExpirationDate.innerText = '##/##';
         setCardType('default');
 
         buttonText.classList.add('hideButtonElement');

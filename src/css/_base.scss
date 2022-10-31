@@ -267,9 +267,10 @@ body {
             list-style: none;
             width: 20px;
             height: 20px;
-            background: #633bbc70;
+            background: #42d3ff60;
             animation: animate 25s linear infinite;
             bottom: -150px;
+            border-radius: 10%;
 
             @for $i from 1 through 10 {
                 &:nth-child(#{$i}) {
@@ -336,13 +337,11 @@ body {
                 0% {
                     transform: translateY(0) rotate(0deg);
                     opacity: 1;
-                    border-radius: 0;
                 }
 
                 100% {
-                    transform: translateY(-1000px) rotate(720deg);
+                    transform: translateY(-120vh) rotate(720deg);
                     opacity: 0;
-                    border-radius: 50%;
                 }
             }
         }
