@@ -203,59 +203,70 @@ inputs.forEach(input => {
 });
 
 const form = document.querySelector('form');
-form.addEventListener('submit', async e => {
+form.addEventListener('submit', e => {
     e.preventDefault();
 
-    let userFirstName = '';
-    for (let letter of cardName.value) {
-        if (letter === ' ') break;
-        else userFirstName += letter;
-    }
+    const formLoader = document.querySelector('.orbit');
+    const app = document.getElementById('app');
 
-    // generating card image url
-    const card = document.querySelector('.cc');
-    const cardUrl = await domtoimage.toPng(card);
+    formLoader.classList.add('showOrbit');
+    app.classList.add('appLoadingState');
 
-    // resetting fields
-    inputs.forEach(input => {
-        input.value = '';
-        input.style.borderColor = '#323238';
-    });
+    setTimeout(async () => {
+        let userFirstName = '';
+        for (let letter of cardName.value) {
+            if (letter === ' ') break;
+            else userFirstName += letter;
+        }
 
-    cardShowName.innerText = 'NOME COMPLETO';
-    cardShowSecurityCode.innerText = '000';
-    cardShowNumber.innerText = '0000 0000 0000 0000';
-    cardShowExpirationDate.innerText = '00/00';
-    setCardType('default');
+        // generating card image url
+        const card = document.querySelector('.cc');
+        const cardUrl = await domtoimage.toPng(card);
 
-    buttonText.classList.add('hideButtonElement');
-    buttonImg.classList.remove('hideButtonElement');
-    button.classList.remove('activeButton');
-    button.disabled = true;
+        // resetting fields
+        inputs.forEach(input => {
+            input.value = '';
+            input.style.borderColor = '#323238';
+        });
 
-    swal({
-        title: `Yo ${userFirstName.toLowerCase()}!`,
-        text: 'Seu cartão foi gerado com sucesso!',
-        icon: 'success',
-        content: {
-            element: 'img',
-            attributes: {
-                src: cardUrl,
-                alt: `${userFirstName.toUpperCase()} GC Card image`
-            }
-        },
-        button: 'Download'
-    })
-        .then(download => {
-            // generating card download link
-            if (download) {
-                const cardImgLink = document.createElement('a');
-                cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
-                cardImgLink.href = cardUrl;
-                cardImgLink.click();
-            }
+        cardShowName.innerText = 'NOME COMPLETO';
+        cardShowSecurityCode.innerText = '000';
+        cardShowNumber.innerText = '0000 0000 0000 0000';
+        cardShowExpirationDate.innerText = '00/00';
+        setCardType('default');
+
+        buttonText.classList.add('hideButtonElement');
+        buttonImg.classList.remove('hideButtonElement');
+        button.classList.remove('activeButton');
+        button.disabled = true;
+
+        formLoader.classList.remove('showOrbit');
+        app.classList.remove('appLoadingState');
+
+        swal({
+            title: `Yo ${userFirstName.toLowerCase()}!`,
+            text: 'Seu cartão foi gerado com sucesso!',
+            icon: 'success',
+            content: {
+                element: 'img',
+                attributes: {
+                    src: cardUrl,
+                    alt: `${userFirstName.toUpperCase()} GC Card image`
+                }
+            },
+            button: 'Download'
         })
-        .catch(error => console.error(error));
+            .then(download => {
+                // generating card download link
+                if (download) {
+                    const cardImgLink = document.createElement('a');
+                    cardImgLink.download = `${userFirstName.toUpperCase()}-GC-Card.png`;
+                    cardImgLink.href = cardUrl;
+                    cardImgLink.click();
+                }
+            })
+            .catch(error => console.error(error));
+    }, 1600);
 });
 
 // cleaning inputs on load
