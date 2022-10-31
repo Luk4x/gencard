@@ -262,7 +262,7 @@ form.addEventListener('submit', e => {
                     alt: `${userFirstName.toUpperCase()} GC Card image`
                 }
             },
-            button: 'Download'
+            button: ''
         })
             .then(download => {
                 // generating card download link
@@ -274,7 +274,7 @@ form.addEventListener('submit', e => {
                 }
             })
             .catch(error => console.error(error));
-    }, 1600);
+    }, 1400);
 });
 
 // cleaning inputs on load
