@@ -131,8 +131,12 @@ const securityCodeMasked = IMask(securityCode, {
 // Changing card
 const cardShowNumber = document.querySelector('.cc-number');
 cardNumberMasked.on('accept', () => {
-    cardShowNumber.innerText = cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '#### #### #### ####';
-    setCardType(cardNumberMasked.masked.currentMask.cardType, cardNumberMasked.masked.currentMask.ext);
+    cardShowNumber.innerText =
+        cardNumberMasked.value.length > 0 ? cardNumberMasked.value : '#### #### #### ####';
+    setCardType(
+        cardNumberMasked.masked.currentMask.cardType,
+        cardNumberMasked.masked.currentMask.ext
+    );
 
     if (cardNumberMasked.masked.currentMask.cardType === 'amex') {
         cardNumber.style.borderColor = cardNumberMasked.value.length === 17 ? '#633bbc' : '#323238';
@@ -140,7 +144,10 @@ cardNumberMasked.on('accept', () => {
         cardNumber.style.borderColor = cardNumberMasked.value.length === 16 ? '#633bbc' : '#323238';
     } else {
         if (cardNumberMasked.value.length === 19) {
-            if (cardNumberMasked.masked.currentMask.cardType && cardNumberMasked.masked.currentMask.cardType !== 'default') {
+            if (
+                cardNumberMasked.masked.currentMask.cardType &&
+                cardNumberMasked.masked.currentMask.cardType !== 'default'
+            ) {
                 cardNumber.style.borderColor = '#633bbc';
             } else {
                 cardNumber.style.borderColor = '#601111';
@@ -163,13 +170,16 @@ cardName.addEventListener('input', () => {
 
 const cardShowExpirationDate = document.querySelector('.cc-extra .value');
 expirationDateMasked.on('accept', () => {
-    cardShowExpirationDate.innerText = expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '##/##';
-    expirationDate.style.borderColor = expirationDateMasked.value.length === 5 ? '#633bbc' : '#323238';
+    cardShowExpirationDate.innerText =
+        expirationDateMasked.value.length > 0 ? expirationDateMasked.value : '##/##';
+    expirationDate.style.borderColor =
+        expirationDateMasked.value.length === 5 ? '#633bbc' : '#323238';
 });
 
 const cardShowSecurityCode = document.querySelector('.cc-security .value');
 securityCodeMasked.on('accept', () => {
-    cardShowSecurityCode.innerText = securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '###';
+    cardShowSecurityCode.innerText =
+        securityCodeMasked.value.length > 0 ? securityCodeMasked.value : '###';
     securityCode.style.borderColor = securityCodeMasked.value.length === 3 ? '#633bbc' : '#323238';
 });
 
