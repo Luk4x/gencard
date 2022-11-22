@@ -55,14 +55,15 @@
 
 > Assistir o vídeo acima e/ou acessar o projeto online ajudará na compreensão da explicação!
 
-Inspirado no [RocketPay](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explorer-Lab-%2301/duplicate), o GenCard simula um formulário de preenchimento de cartão de crédito, mas adicionalmente conta com validações extras, melhorias de layout, experiência do usuário e animação, e a opção de gerar e baixar a imagem do cartão preenchido.
+Inspirado no [RocketPay](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explorer-Lab-%2301/duplicate), o GenCard simula um formulário de preenchimento de cartão de crédito, onde o foco foi praticar a manipulação de elementos HTML via DOM e utilizar o `IMask` para a validação das informações.<br>
+Visto que já tinha esses conhecimentos, aproveitei a oportunidade para dar margem às minhas ideias e explorar mais sobre Regex e Sass, assim desenvolvendo diversas modificações e melhorias, como a criação de validações extras, o desenvolvimento de um CSS mais rebuscado e performático, entre outras citadas na sessão de destaques.<br> 
 
 ### 📌 Alguns Destaques
 
-- Manipulação de elementos HTML via DOM;
-- Validações das informações via `IMask/Regex`, e contando com verificações extras;
+- Validações extras;
+- Mais possibilidades de cartões;
 - Layout, experiência do usuário e animações melhoradas com o uso de `Sass`, da lib `Vanilla-Tilt`, e componentes de Loaders e Buttons.;
-- Opção de gerar e baixar imagens utilizando o `Dom-To-Image`;
+- Opção de gerar e baixar a imagem do cartão utilizando o `Dom-To-Image` - funcionalidade essa que pode não ter muito sentido nesse contexto, mas mesmo assim quis pôr em prática essa ideia que me veio a mente;
 - Modal de feedback para o usuário com informações do mesmo utilizando o `SweetAlert`;
 - Projeto totalmente responsivo;
 
