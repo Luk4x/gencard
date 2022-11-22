@@ -264,7 +264,7 @@ form.addEventListener('submit', e => {
         app.classList.remove('appLoadingState');
 
         swal({
-            title: `Yo ${userFirstName.toLowerCase()}!`,
+            title: `Hey ${userFirstName.toLowerCase()}!`,
             text: 'Seu cartão foi gerado com sucesso!',
             icon: 'success',
             content: {

@@ -127,7 +127,6 @@ body {
     .orbit {
         $uib-size: 80px;
         $uib-speed: 1.5s;
-        $uib-color: $secondary-color;
         position: absolute;
         display: flex;
         align-items: center;
@@ -146,16 +145,17 @@ body {
             height: 60%;
             width: 60%;
             border-radius: 50%;
-            background-color: $uib-color;
             will-change: transform;
             flex-shrink: 0;
         }
 
         &::before {
+            background-color: $primary-color;
             animation: orbit $uib-speed linear infinite;
         }
 
         &::after {
+            background-color: $secondary-color;
             animation: orbit $uib-speed linear calc($uib-speed / -2) infinite;
         }
 
@@ -253,12 +253,12 @@ body {
         z-index: 1;
     }
 
-    .circles {
+    .squares {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         overflow: hidden;
 
         li {
@@ -270,7 +270,7 @@ body {
             background: #42d3ff60;
             animation: animate 25s linear infinite;
             bottom: -150px;
-            border-radius: 10%;
+            border-radius: 6%;
 
             @for $i from 1 through 10 {
                 &:nth-child(#{$i}) {
