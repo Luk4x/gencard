@@ -59,7 +59,7 @@ Inspirado no [RocketPay](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explo
 
 ### 📌 Alguns Destaques
 
-- DOM Manipulation;
+- Manipulação de elementos HTML via DOM;
 - Validações das informações via `IMask/Regex`, e contando com verificações extras;
 - Layout, experiência do usuário e animações melhoradas com o uso de `Sass`, da lib `Vanilla-Tilt`, e componentes de Loaders e Buttons.;
 - Opção de gerar e baixar imagens utilizando o `Dom-To-Image`;
@@ -68,7 +68,7 @@ Inspirado no [RocketPay](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explo
 
 ## 📖 Clonando o Projeto
 
-Para clonar e executar este projeto em seu computador, você precisará apenas que o [Git](https://git-scm.com/) esteja previamente instalado.<br>
+Para clonar e executar este projeto em seu computador, você precisará do [Git](https://git-scm.com/) e [Node.js v16.13.2](https://nodejs.org/en/) ou superior previamente instalados.<br>
 Feito isso, no terminal:
 
 ```bash
@@ -77,6 +77,9 @@ Feito isso, no terminal:
 
 # Entre no repositório com:
 > cd gencard
+
+# Instale as dependências com:
+> npm install
 
 # Execute o projeto com:
 > npm run dev
@@ -110,7 +113,7 @@ Feito isso, no terminal:
 | :placard: Vitrine.Dev | Lucas Maciel |
 | -------------  | --- |
 | :sparkles: Nome        | **💳 GenCard**
-| :label: Tecnologias | bootstrap, jquery, javascript, css, html
+| :label: Tecnologias | sass, regex, imask, sweetalert, nodejs, npm, css-buttons, dom-to-image, vitejs, vanilla-tilt, ui-ball-loaders, javascript, css, html
 | :camera: Img         | <img src="https://user-images.githubusercontent.com/86276393/202928344-0290c6bd-5636-406d-8e1d-96ba6c15a8b7.png#vitrinedev" alt="vitrine.dev thumb" width="100%"/>
 
 </details>
