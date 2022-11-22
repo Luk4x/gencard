@@ -28,11 +28,11 @@
 
 ## 📹 Apresentação em Vídeo do Projeto
 <div align="center">
-  <video src="" />
+  <video src="https://user-images.githubusercontent.com/86276393/203429729-5bbd30b6-0661-4f2e-98ba-3cc7d463531b.mp4" />
 </div>
 
 > **Caso o vídeo apresente algum erro, recarregue a página!**<br>
-> Acesse o projeto online **[AQUI]()**
+> Acesse o projeto online **[AQUI](https://luk4x-gencard.netlify.app/)**
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -116,9 +116,27 @@ Feito isso, no terminal:
 | -------------  | --- |
 | :sparkles: Nome        | **💳 GenCard**
 | :label: Tecnologias | sass, regex, imask, sweetalert, nodejs, npm, css-buttons, dom-to-image, vitejs, vanilla-tilt, ui-ball-loaders, javascript, css, html
-| :camera: Img         | <img src="https://user-images.githubusercontent.com/86276393/202928344-0290c6bd-5636-406d-8e1d-96ba6c15a8b7.png#vitrinedev" alt="vitrine.dev thumb" width="100%"/>
+| :camera: Img         | <img src="https://user-images.githubusercontent.com/86276393/203431825-53ab2999-90a6-45b1-a6f0-0b199c49b950.png#vitrinedev" alt="vitrine.dev thumb" width="100%"/>
 
 </details>
+</td>
+<td align="center">
+    <b><a href="https://maykbrito.dev/">MaykBrito.Dev</a> 🪟</b>
+    <table>
+      <tr>
+        <td align="center">
+          <a href="https://github.com/maykbrito">
+            <img src="https://avatars.githubusercontent.com/maykbrito" width="150px;" alt="Luk4x Github Photo"/>
+          </a>
+          <br>
+          <a href="https://www.linkedin.com/in/maykbrito/">
+            <sub>
+              <b>Mayk Brito</b>
+            </sub>
+          </a>
+        </td>
+      </tr>
+    </table>
 </td>
 </tr>
 </table>
