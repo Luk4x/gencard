@@ -41,6 +41,8 @@
 - [Dom-To-Image](https://github.com/tsayen/dom-to-image)
 - [Sass](https://sass-lang.com/)
 - [iMask](https://imask.js.org)
+- [UI Ball Loaders](https://uiball.com/)
+- [CSS Buttons](https://uiverse.io/)
 - [Regex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 - [ViteJS](https://vitejs.dev/)
 - [NodeJS](https://nodejs.org)
@@ -53,18 +55,16 @@
 
 > Assistir o vídeo acima e/ou acessar o projeto online ajudará na compreensão da explicação!
 
-O viaCEP, como o nome sugere, é uma aplicação web de consulta de CEP, onde faço o consumo da [API](https://viacep.com.br/) dos correios, e com base nos dados recebidos, mostro uma referência no Google Maps.
-<br>
-Desenvolvido com <b>HTML</b>, <b>CSS</b>, <b>Javascript</b>, <b>JQuery</b> e <b>Bootstrap</b>, meu objetivo ao desenvolvê-lo foi de criar um projeto simples para fixar melhor determinados conhecimentos sobre Bootstrap e JQuery.
+Inspirado no [RocketPay](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explorer-Lab-%2301/duplicate), o GenCard simula um formulário de preenchimento de cartão de crédito, mas adicionalmente conta com validações extras, melhorias de layout, experiência do usuário e animação, e a opção de gerar e baixar a imagem do cartão preenchido.
 
 ### 📌 Alguns Destaques
 
-- Utilização de variáveis CSS e manipulação das mesmas via Javascript para auxiliar na responsividade;
-- O Loader e o Botão de redes sociais foram feitos com o auxílio do Bootstrap;
-- Fiz um pequeno mapeamento de teclas com a `;` apenas para focar no Input;
-- A maioria das animações e pouco da responsividade foram feitos com o auxílio do JQuery;
-- Utilizei JQuery-Ajax para fazer o consumo da API;
-- Utilizei o JQuery Mask Plugin para formatar o campo de Input;
+- DOM Manipulation;
+- Validações das informações via `IMask/Regex`, e contando com verificações extras;
+- Layout, experiência do usuário e animações melhoradas com o uso de `Sass`, da lib `Vanilla-Tilt`, e componentes de Loaders e Buttons.;
+- Opção de gerar e baixar imagens utilizando o `Dom-To-Image`;
+- Modal de feedback para o usuário com informações do mesmo utilizando o `SweetAlert`;
+- Projeto totalmente responsivo;
 
 ## 📖 Clonando o Projeto
 
@@ -73,14 +73,13 @@ Feito isso, no terminal:
 
 ```bash
 # Clone esse repositório com:
-> git clone https://github.com/Luk4x/viaCEP-API.git
+> git clone https://github.com/Luk4x/gencard.git
 
 # Entre no repositório com:
-> cd viaCEP-API
+> cd gencard
 
 # Execute o projeto com:
-> start index.html # Para usuários de Windows
-> open index.html # Para usuários de Linux/Mac
+> npm run dev
 ```
 
 ## 🤝 Contato dos Contribuintes
@@ -122,22 +121,3 @@ Feito isso, no terminal:
 <p align="right">
   <a href="#-gencard-project">Voltar ao Topo</a>
 </p>
-
-
-
-
-## 💻 Projeto
-
-O Rocketpay é um componente que simula o formulário de preenchimento de cartão de crédito, onde é possível adicionar máscara aos inputs e atualizar elementos HTML via DOM.
-
-## 🔖 Layout
-
-Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explorer-Lab-%2301/duplicate). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
-
-## :memo: Licença
-
-Esse projeto está sob a licença MIT.
-
----
-
-Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discord.gg/rocketseat)
