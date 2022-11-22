@@ -83,6 +83,8 @@ Feito isso, no terminal:
 
 # Execute o projeto com:
 > npm run dev
+
+# Feito isso, você já poderá acessar o projeto pelo link que aparecerá no terminal! (algo como http://localhost:3000/ ou http://127.0.0.1:5173/)
 ```
 
 ## 🤝 Contato dos Contribuintes
