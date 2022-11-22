@@ -12,7 +12,7 @@
 </table>
 
 ![luk4x-repo-status](https://img.shields.io/badge/Status-Finished-lightgrey?style=for-the-badge&logo=headspace&logoColor=green&color=lightgrey)
-![luk4x-repo-license](https://img.shields.io/github/license/Luk4x/viaCEP-API?style=for-the-badge&logo=unlicense&logoColor=lightgrey)
+![luk4x-repo-license](https://img.shields.io/github/license/Luk4x/gencard?style=for-the-badge&logo=unlicense&logoColor=lightgrey)
 # 💳 GenCard Project
 
 <br>
@@ -28,19 +28,26 @@
 
 ## 📹 Apresentação em Vídeo do Projeto
 <div align="center">
-  <video src="https://user-images.githubusercontent.com/86276393/173253896-43955339-98aa-43d9-9213-6ef4583f19ba.mp4" />
+  <video src="" />
 </div>
 
 > **Caso o vídeo apresente algum erro, recarregue a página!**<br>
-> Acesse o projeto online **[AQUI](https://luk4x.github.io/viaCEP-API/)**
+> Acesse o projeto online **[AQUI]()**
 
 ## 🚀 Tecnologias Utilizadas
 
--   [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
--   [JQuery](https://jquery.com/)
--   [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
--   [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
--   [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [SweetAlert](https://sweetalert.js.org/guides/)
+- [Vanilla-Tilt](https://micku7zu.github.io/vanilla-tilt.js/)
+- [Dom-To-Image](https://github.com/tsayen/dom-to-image)
+- [Sass](https://sass-lang.com/)
+- [iMask](https://imask.js.org)
+- [Regex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [ViteJS](https://vitejs.dev/)
+- [NodeJS](https://nodejs.org)
+- [npm](https://www.npmjs.com/)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
 ## 📝 Sobre
 
@@ -118,11 +125,6 @@ Feito isso, no terminal:
 
 
 
-- HTML e CSS
-- JavaScript e JSON
-- [Node e NPM](https://nodejs.org/)
-- [Vite](https://vitejs.dev/)
-- [iMask](https://imask.js.org)
 
 ## 💻 Projeto
 
